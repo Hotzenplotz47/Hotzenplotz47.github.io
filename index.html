@@ -15,33 +15,15 @@
         extend: {
           colors: {
             brand: {
-              primary: '#0284c7', // Sky-600
-              accent: '#0ea5e9', // Sky-500
-              green: '#059669',  // Emerald-600
-              greenLight: '#d1fae5',
-              surface: '#F8FAFC', // Slate-50
+              primary: '#0284c7',
+              accent: '#0ea5e9',
+              green: '#059669',
+              surface: '#F8FAFC',
             }
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
             serif: ['Instrument Serif', 'serif']
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'fade-up': 'fadeUp 0.8s ease-out forwards',
-            'fade-up-d1': 'fadeUp 0.8s ease-out 0.15s forwards',
-            'fade-up-d2': 'fadeUp 0.8s ease-out 0.3s forwards',
-            'fade-up-d3': 'fadeUp 0.8s ease-out 0.45s forwards',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-8px)' }
-            },
-            fadeUp: {
-              from: { opacity: '0', transform: 'translateY(20px)' },
-              to: { opacity: '1', transform: 'translateY(0)' }
-            }
           }
         }
       }
@@ -50,7 +32,7 @@
   <style>
     body {
       background-color: #F8FAFC;
-      color: #1e293b; /* Slate-800 */
+      color: #1e293b;
       font-family: 'Inter', sans-serif;
     }
     ::-webkit-scrollbar { width: 6px; }
@@ -62,11 +44,11 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    
+
     .glass-card {
       background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(226, 232, 240, 0.8); /* Slate-200 */
+      border: 1px solid rgba(226, 232, 240, 0.8);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     }
 
@@ -105,7 +87,36 @@
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
       border-color: #0284c7;
     }
-    
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .anim-fade-up {
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out forwards;
+    }
+    .anim-fade-up-d1 {
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 0.15s forwards;
+    }
+    .anim-fade-up-d2 {
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 0.3s forwards;
+    }
+    .anim-fade-up-d3 {
+      opacity: 0;
+      animation: fadeUp 0.8s ease-out 0.45s forwards;
+    }
+
     .counter-value {
       font-variant-numeric: tabular-nums;
     }
@@ -113,9 +124,9 @@
 </head>
 <body>
 
-  <!-- ========== NAV ========== -->
+  <!-- NAV -->
   <nav class="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[95%] md:w-[92%] max-w-5xl z-50">
-    <div class="glass-card rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
+    <div id="navbar" class="glass-card rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
       <a href="#" class="flex items-center gap-2.5">
         <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center">
           <span class="text-white text-xs font-semibold">MR</span>
@@ -154,40 +165,39 @@
     </div>
   </nav>
 
-  <!-- ========== HERO ========== -->
+  <!-- HERO -->
   <section class="relative pt-36 md:pt-48 pb-20 md:pb-32 px-4 overflow-hidden">
-    <!-- Subtle Background Elements -->
     <div class="absolute top-20 right-0 w-96 h-96 bg-sky-100/50 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-50/50 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="max-w-4xl mx-auto text-center relative z-10">
-      <div class="inline-flex items-center gap-2 bg-sky-50 border border-sky-100 rounded-full px-4 py-1.5 mb-8 opacity-0 animate-fade-up">
+      <div class="inline-flex items-center gap-2 bg-sky-50 border border-sky-100 rounded-full px-4 py-1.5 mb-8 anim-fade-up">
         <span class="iconify text-brand-primary text-sm" data-icon="mdi:trending-down"></span>
         <span class="text-[11px] font-medium text-sky-700 uppercase tracking-wider">Kosten senken durch Nachhaltigkeit</span>
       </div>
 
-      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.05] tracking-tight mb-6 opacity-0 animate-fade-up-d1 text-slate-900">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.05] tracking-tight mb-6 anim-fade-up-d1 text-slate-900">
         Nachhaltigkeit,<br>
         <span class="text-gradient-dark">die sich rechnet.</span>
       </h1>
 
-      <p class="text-base md:text-lg text-slate-500 font-light leading-relaxed max-w-2xl mx-auto mb-10 opacity-0 animate-fade-up-d2">
+      <p class="text-base md:text-lg text-slate-500 font-light leading-relaxed max-w-2xl mx-auto mb-10 anim-fade-up-d2">
         Keine komplexen Kalkulationen, sondern Zahlen, die Unternehmen verstehen. Ich zeige Ihnen, wo Emissionen zu <strong class="font-medium text-slate-700">unnötigen Kosten</strong> führen und wie Sie das <strong class="font-medium text-slate-700">Einsparpotenzial</strong> Ihres Unternehmens heben.
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-up-d3">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center anim-fade-up-d3">
         <button onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})" class="group text-sm font-semibold bg-slate-900 text-white px-8 py-3.5 rounded-full hover:bg-slate-800 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 shadow-slate-900/10">
           Einsparpotenzial prüfen
           <span class="iconify group-hover:translate-x-0.5 transition-transform" data-icon="mdi:arrow-right" width="16"></span>
         </button>
-        <button onclick="document.getElementById('#vorteil').scrollIntoView({behavior:'smooth'})" class="text-sm font-medium text-slate-600 px-8 py-3.5 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-white transition-all duration-300 flex items-center justify-center gap-2 bg-white/50">
+        <button onclick="document.getElementById('vorteil').scrollIntoView({behavior:'smooth'})" class="text-sm font-medium text-slate-600 px-8 py-3.5 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-white transition-all duration-300 flex items-center justify-center gap-2 bg-white/50">
           So funktioniert es
         </button>
       </div>
     </div>
   </section>
 
-  <!-- ========== VALUE DASHBOARD / NUMBERS ========== -->
+  <!-- VALUE / NUMBERS -->
   <section class="relative pb-20 md:pb-32 px-4" id="vorteil">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-12 reveal">
@@ -197,16 +207,16 @@
       </div>
 
       <div class="glass-card-strong rounded-2xl p-6 md:p-10 reveal">
-        <div class="grid md:grid-cols-3 gap-8 md:gap-12 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-10">
           <div class="text-center md:text-left">
             <p class="text-[10px] uppercase tracking-widest text-slate-400 font-medium mb-2">Durchschnittliches Einsparpotenzial</p>
             <div class="flex items-baseline justify-center md:justify-start gap-1">
-              <span class="text-4xl md:text-5xl font-serif tracking-tight text-brand-green counter-value" data-count="18">0</span>
-              <span class="text-2xl font-serif text-brand-green">%</span>
+              <span class="text-4xl md:text-5xl font-serif tracking-tight text-emerald-600 counter-value" data-count="18">0</span>
+              <span class="text-2xl font-serif text-emerald-600">%</span>
             </div>
             <p class="text-sm text-slate-500 mt-2">bei Energie- & Materialkosten</p>
           </div>
-          <div className="border-l border-slate-100 hidden md:block"></div>
+
           <div class="text-center md:text-left">
             <p class="text-[10px] uppercase tracking-widest text-slate-400 font-medium mb-2">Vermeidbare CO₂-Kosten</p>
             <div class="flex items-baseline justify-center md:justify-start gap-1">
@@ -215,7 +225,7 @@
             </div>
             <p class="text-sm text-slate-500 mt-2">pro Tonne CO₂ (EU-ETS Preis)</p>
           </div>
-          <div className="border-l border-slate-100 hidden md:block"></div>
+
           <div class="text-center md:text-left">
             <p class="text-[10px] uppercase tracking-widest text-slate-400 font-medium mb-2">Risiko durch Compliance-Verstöße</p>
             <div class="flex items-baseline justify-center md:justify-start gap-1">
@@ -225,45 +235,44 @@
             <p class="text-sm text-slate-500 mt-2">Mindeststrafen bei fehlendem Report</p>
           </div>
         </div>
-        
-        <!-- Visual Mockup: Simple Chart -->
+
+        <!-- Simple Chart -->
         <div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
           <div class="flex items-center justify-between mb-4">
             <p class="text-xs font-medium text-slate-600">Kostenentwicklung nach Optimierung</p>
             <div class="flex items-center gap-4 text-[10px] text-slate-400">
-                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-300"></span> Bisherige Kosten</span>
-                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-brand-primary"></span> Optimiert</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-300"></span> Bisherige Kosten</span>
+              <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-sky-500"></span> Optimiert</span>
             </div>
           </div>
           <div class="flex items-end gap-2 h-24">
-            <div class="flex-1 flex flex-col gap-1">
-              <div class="w-full bg-slate-200 rounded-t" style="height: 80px;"></div>
-              <div class="w-full bg-brand-primary/80 rounded-t -mt-4" style="height: 60px;"></div>
-            </div>
-            <div class="flex-1 flex flex-col gap-1">
-              <div class="w-full bg-slate-200 rounded-t" style="height: 70px;"></div>
-              <div class="w-full bg-brand-primary/80 rounded-t -mt-5" style="height: 45px;"></div>
-            </div>
-            <div class="flex-1 flex flex-col gap-1">
-              <div class="w-full bg-slate-200 rounded-t" style="height: 90px;"></div>
-              <div class="w-full bg-brand-primary/80 rounded-t -mt-7" style="height: 50px;"></div>
-            </div>
-            <div class="flex-1 flex flex-col gap-1">
-              <div class="w-full bg-slate-200 rounded-t" style="height: 60px;"></div>
-              <div class="w-full bg-brand-primary/80 rounded-t -mt-6" style="height: 25px;"></div>
-            </div>
-            <div class="flex-1 flex flex-col gap-1">
+            <div class="flex-1 flex flex-col justify-end gap-0.5">
+              <div class="w-full bg-sky-500/80 rounded-t" style="height: 55px;"></div>
               <div class="w-full bg-slate-200 rounded-t" style="height: 75px;"></div>
-              <div class="w-full bg-brand-primary/80 rounded-t -mt-8" style="height: 30px;"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-end gap-0.5">
+              <div class="w-full bg-sky-500/80 rounded-t" style="height: 40px;"></div>
+              <div class="w-full bg-slate-200 rounded-t" style="height: 65px;"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-end gap-0.5">
+              <div class="w-full bg-sky-500/80 rounded-t" style="height: 45px;"></div>
+              <div class="w-full bg-slate-200 rounded-t" style="height: 85px;"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-end gap-0.5">
+              <div class="w-full bg-sky-500/80 rounded-t" style="height: 25px;"></div>
+              <div class="w-full bg-slate-200 rounded-t" style="height: 55px;"></div>
+            </div>
+            <div class="flex-1 flex flex-col justify-end gap-0.5">
+              <div class="w-full bg-sky-500/80 rounded-t" style="height: 30px;"></div>
+              <div class="w-full bg-slate-200 rounded-t" style="height: 70px;"></div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ========== SERVICES ========== -->
+  <!-- SERVICES -->
   <section class="relative py-20 md:py-32 px-4" id="leistungen">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16 reveal">
@@ -273,25 +282,22 @@
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Service 1 -->
         <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
           <div class="w-11 h-11 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6">
             <span class="iconify text-brand-primary text-xl" data-icon="mdi:cash-remove"></span>
           </div>
           <h3 class="text-lg font-medium mb-3 text-slate-900">Kosten & Emissionen senken</h3>
-          <p class="text-sm text-slate-500 font-light leading-relaxed">Identifikation der größten Kostentreiber und Einsparpotenziale in Ihren Scope 1-3 Emissionen. Ohne Abstriche am Output.</p>
+          <p class="text-sm text-slate-500 font-light leading-relaxed">Identifikation der größten Kostentreiber und Einsparpotenziale in Ihren Emissionen. Ohne Abstriche am Output.</p>
         </div>
 
-        <!-- Service 2 -->
         <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
           <div class="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-6">
-            <span class="iconify text-brand-green text-xl" data-icon="mdi:chart-box-outline"></span>
+            <span class="iconify text-emerald-600 text-xl" data-icon="mdi:chart-box-outline"></span>
           </div>
           <h3 class="text-lg font-medium mb-3 text-slate-900">Management-Reporting</h3>
-          <p class="text-sm text-slate-500 font-light leading-relaxed">Keine 100-seitigen Öko-Papiere. Ich liefere kompakte Berichte mit Kennzahlen, die Vorstände und Geschäftsführer sofort verstehen.</p>
+          <p class="text-sm text-slate-500 font-light leading-relaxed">Keine 100-seitigen Öko-Papiere. Ich liefere kompakte Berichte mit Kennzahlen, die Entscheidungsträger sofort verstehen.</p>
         </div>
 
-        <!-- Service 3 -->
         <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
           <div class="w-11 h-11 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-6">
             <span class="iconify text-amber-600 text-xl" data-icon="mdi:shield-check-outline"></span>
@@ -300,7 +306,6 @@
           <p class="text-sm text-slate-500 font-light leading-relaxed">Erfüllung von CSRD, EU-Taxonomie und Lieferkettengesetz. Sorgfältig aufbereitet, damit Sie bei Audits auf der sicheren Seite sind.</p>
         </div>
 
-        <!-- Service 4 -->
         <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
           <div class="w-11 h-11 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center mb-6">
             <span class="iconify text-violet-600 text-xl" data-icon="mdi:database-check-outline"></span>
@@ -309,7 +314,6 @@
           <p class="text-sm text-slate-500 font-light leading-relaxed">Wir bringen Ordnung in Ihre Emissionsdaten. Ich helfe bei der Auswahl und Implementierung von Carbon-Accounting-Software.</p>
         </div>
 
-        <!-- Service 5 -->
         <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
           <div class="w-11 h-11 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center mb-6">
             <span class="iconify text-rose-600 text-xl" data-icon="mdi:lightbulb-on-outline"></span>
@@ -318,7 +322,6 @@
           <p class="text-sm text-slate-500 font-light leading-relaxed">Wo verstecken sich die einfachen Wins? Ich analysiere Lieferketten, Energieverbräuche und Prozesse auf schnelle Erfolge.</p>
         </div>
 
-        <!-- Service 6 -->
         <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
           <div class="w-11 h-11 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6">
             <span class="iconify text-brand-primary text-xl" data-icon="mdi:handshake-outline"></span>
@@ -330,8 +333,8 @@
     </div>
   </section>
 
-  <!-- ========== PROCESS ========== -->
-  <section class="relative py-20 md:py-32 px-4 bg-white border-y border-slate-100" id="vorgehen">
+  <!-- PROCESS -->
+  <section class="relative py-20 md:py-32 px-4 bg-white border-y border-slate-100">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-16 reveal">
         <p class="text-[11px] font-medium uppercase tracking-widest text-brand-primary mb-4">Vorgehen</p>
@@ -340,7 +343,7 @@
 
       <div class="space-y-5">
         <div class="reveal">
-          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start group hover:border-brand-primary/20 transition-all duration-300">
+          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start hover:border-sky-200 transition-all duration-300">
             <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center mt-0.5 text-sm font-semibold">01</div>
             <div>
               <h3 class="text-base font-medium mb-2 text-slate-900">Status-Quo & Kostentreiber</h3>
@@ -350,18 +353,18 @@
         </div>
 
         <div class="reveal">
-          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start group hover:border-brand-primary/20 transition-all duration-300">
+          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start hover:border-sky-200 transition-all duration-300">
             <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center mt-0.5 text-sm font-semibold">02</div>
             <div>
               <h3 class="text-base font-medium mb-2 text-slate-900">Emissionsanalyse & Bewertung</h3>
-              <p class="text-sm text-slate-500 font-light leading-relaxed">Keine Over-Engineering. Ich berechne Ihren Footprint dort, wo es materiell ist – fokussiert auf die Posten, die finanziell ins Gewicht fallen.</p>
+              <p class="text-sm text-slate-500 font-light leading-relaxed">Kein Over-Engineering. Ich berechne Ihren Footprint dort, wo es materiell ist – fokussiert auf die Posten, die finanziell ins Gewicht fallen.</p>
             </div>
           </div>
         </div>
 
         <div class="reveal">
-          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start group hover:border-brand-primary/20 transition-all duration-300">
-            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-brand-primary text-white flex items-center justify-center mt-0.5 text-sm font-semibold">03</div>
+          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start hover:border-sky-200 transition-all duration-300">
+            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-sky-600 text-white flex items-center justify-center mt-0.5 text-sm font-semibold">03</div>
             <div>
               <h3 class="text-base font-medium mb-2 text-slate-900">Einsparpotenziale & Strategie</h3>
               <p class="text-sm text-slate-500 font-light leading-relaxed">Sie bekommen einen Maßnahmenplan mit ROI-Angaben. Was kostet die Umsetzung, was bringt es? Priorisiert nach Impact.</p>
@@ -370,8 +373,8 @@
         </div>
 
         <div class="reveal">
-          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start group hover:border-brand-primary/20 transition-all duration-300">
-            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-brand-green text-white flex items-center justify-center mt-0.5 text-sm font-semibold">04</div>
+          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start hover:border-sky-200 transition-all duration-300">
+            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center mt-0.5 text-sm font-semibold">04</div>
             <div>
               <h3 class="text-base font-medium mb-2 text-slate-900">Umsetzung & Reporting</h3>
               <p class="text-sm text-slate-500 font-light leading-relaxed">Audit-feste Dokumentation und interne Berichte. Ich begleite Sie bei der Umsetzung der ersten Quick-Wins.</p>
@@ -382,21 +385,19 @@
     </div>
   </section>
 
-  <!-- ========== ABOUT ========== -->
+  <!-- ABOUT -->
   <section class="relative py-20 md:py-32 px-4" id="ueber">
     <div class="max-w-6xl mx-auto">
       <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
-        <!-- Image Side -->
         <div class="lg:col-span-2 reveal">
           <div class="relative">
             <div class="rounded-2xl overflow-hidden aspect-[3/4] shadow-xl">
               <img src="https://picsum.photos/seed/max-rosskotten-business/600/800.jpg" alt="Max Rosskotten" class="w-full h-full object-cover">
             </div>
-            <!-- Floating credential -->
             <div class="absolute -bottom-4 -right-2 md:-right-4 bg-white rounded-xl px-4 py-3 shadow-lg border border-slate-100 animate-float">
               <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center">
-                  <span class="iconify text-brand-green" data-icon="mdi:currency-eur" width="18"></span>
+                  <span class="iconify text-emerald-600" data-icon="mdi:currency-eur" width="18"></span>
                 </div>
                 <div>
                   <p class="text-[11px] font-medium text-slate-800">Business First</p>
@@ -407,14 +408,13 @@
           </div>
         </div>
 
-        <!-- Text Side -->
         <div class="lg:col-span-3 reveal">
           <p class="text-[11px] font-medium uppercase tracking-widest text-brand-primary mb-4">Über mich</p>
           <h2 class="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 mb-6">Max Rosskotten</h2>
           <div class="space-y-4 text-base text-slate-500 font-light leading-relaxed">
             <p>Ich bin der Überzeugung, dass Nachhaltigkeit nur dann erfolgreich ist, wenn sie wirtschaftlich Sinn ergibt. Mein Ansatz ist pragmatisch: Ich übersetze Umweltkennzahlen in die Sprache des Geschäftsführers – Kosten, Risiken und Einsparungen.</p>
             <p>Anstatt Sie mit komplexen GHG-Protokoll-Details aufzuhalten, fokussiere ich mich auf die Frage: <strong class="font-medium text-slate-700">Wo verschenken Sie Geld durch ineffiziente Prozesse und unnötige Emissionen?</strong></p>
-            <p>Mit fundierter Expertise in den Methoden und einem klaren Blick für das Wesentliche unterstütze ich Sie dabei, Nachhaltigkeit von einer Pflichtaufgabe in einen echten Wettbewerbsvorteil zu verwandeln.</p>
+            <p>Mit fundierter Expertise und einem klaren Blick für das Wesentliche unterstütze ich Sie dabei, Nachhaltigkeit von einer Pflichtaufgabe in einen echten Wettbewerbsvorteil zu verwandeln.</p>
           </div>
 
           <div class="mt-8 flex flex-wrap gap-2">
@@ -422,14 +422,14 @@
             <span class="text-[11px] font-medium px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600">CSRD</span>
             <span class="text-[11px] font-medium px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600">EU-Taxonomie</span>
             <span class="text-[11px] font-medium px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600">ISO 14064</span>
-            <span class="text-[11px] font-medium px-3 py-1.5 rounded-full bg-sky-50 border border-sky-100 text-brand-primary">Kostenoptimierung</span>
+            <span class="text-[11px] font-medium px-3 py-1.5 rounded-full bg-sky-50 border border-sky-100 text-sky-700">Kostenoptimierung</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CONTACT ========== -->
+  <!-- CONTACT -->
   <section class="relative py-20 md:py-32 px-4 bg-white border-t border-slate-100" id="kontakt">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-12 reveal">
@@ -443,22 +443,22 @@
           <div class="grid md:grid-cols-2 gap-5">
             <div>
               <label class="block text-[11px] uppercase tracking-widest text-slate-400 font-medium mb-2">Name</label>
-              <input type="text" required placeholder="Ihr Name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary/20 transition-all duration-300">
+              <input type="text" required placeholder="Ihr Name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-1 focus:ring-sky-500/20 transition-all duration-300">
             </div>
             <div>
               <label class="block text-[11px] uppercase tracking-widest text-slate-400 font-medium mb-2">E-Mail</label>
-              <input type="email" required placeholder="ihre@email.de" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary/20 transition-all duration-300">
+              <input type="email" required placeholder="ihre@email.de" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-1 focus:ring-sky-500/20 transition-all duration-300">
             </div>
           </div>
 
           <div>
             <label class="block text-[11px] uppercase tracking-widest text-slate-400 font-medium mb-2">Unternehmen</label>
-            <input type="text" placeholder="Firmenname (optional)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary/20 transition-all duration-300">
+            <input type="text" placeholder="Firmenname (optional)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-1 focus:ring-sky-500/20 transition-all duration-300">
           </div>
 
           <div>
             <label class="block text-[11px] uppercase tracking-widest text-slate-400 font-medium mb-2">Größte Herausforderung</label>
-            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-600 focus:outline-none focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary/20 transition-all duration-300 appearance-none" style="background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22><path fill=%22%2394a3b8%22 d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 16px center;">
+            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-600 focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-1 focus:ring-sky-500/20 transition-all duration-300 appearance-none" style="background-image: url(&quot;data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%2394a3b8' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E&quot;); background-repeat: no-repeat; background-position: right 16px center;">
               <option value="" disabled selected>Bitte wählen...</option>
               <option value="costs">Unklare Energie- & Materialkosten</option>
               <option value="compliance">Anstehende CSRD-Pflichten</option>
@@ -470,7 +470,7 @@
 
           <div>
             <label class="block text-[11px] uppercase tracking-widest text-slate-400 font-medium mb-2">Nachricht</label>
-            <textarea rows="4" placeholder="Kurze Beschreibung Ihrer Situation..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary/20 transition-all duration-300 resize-none"></textarea>
+            <textarea rows="4" placeholder="Kurze Beschreibung Ihrer Situation..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:bg-white focus:ring-1 focus:ring-sky-500/20 transition-all duration-300 resize-none"></textarea>
           </div>
 
           <div class="pt-2">
@@ -491,7 +491,7 @@
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer class="relative py-10 md:py-14 px-4 bg-slate-900 text-white">
     <div class="max-w-6xl mx-auto">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -532,14 +532,15 @@
     </div>
   </footer>
 
+  <!-- SCRIPTS -->
   <script>
-    // ===== Mobile Menu =====
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const bar1 = document.getElementById('bar1');
-    const bar2 = document.getElementById('bar2');
-    const bar3 = document.getElementById('bar3');
-    let menuOpen = false;
+    // Mobile Menu
+    var menuBtn = document.getElementById('menuBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+    var bar1 = document.getElementById('bar1');
+    var bar2 = document.getElementById('bar2');
+    var bar3 = document.getElementById('bar3');
+    var menuOpen = false;
 
     function closeMobileMenu() {
       menuOpen = false;
@@ -550,7 +551,7 @@
       bar3.style.width = '12px';
     }
 
-    menuBtn.addEventListener('click', () => {
+    menuBtn.addEventListener('click', function() {
       menuOpen = !menuOpen;
       mobileMenu.classList.toggle('open', menuOpen);
       if (menuOpen) {
@@ -563,56 +564,60 @@
       }
     });
 
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', closeMobileMenu);
-    });
+    var mobileLinks = document.querySelectorAll('.mobile-link');
+    for (var i = 0; i < mobileLinks.length; i++) {
+      mobileLinks[i].addEventListener('click', closeMobileMenu);
+    }
 
-    // ===== Scroll Reveal =====
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    // Scroll Reveal
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('active');
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    var revealElements = document.querySelectorAll('.reveal');
+    for (var j = 0; j < revealElements.length; j++) {
+      revealObserver.observe(revealElements[j]);
+    }
 
-    // ===== Smooth Scroll =====
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        var target = document.querySelector(this.getAttribute('href'));
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
 
-    // ===== Contact Form =====
+    // Contact Form
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const toast = document.getElementById('successToast');
+      var toast = document.getElementById('successToast');
       toast.classList.remove('hidden');
       this.reset();
-      setTimeout(() => { toast.classList.add('hidden'); }, 5000);
+      setTimeout(function() { toast.classList.add('hidden'); }, 5000);
     });
 
-    // ===== Counter Animation =====
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    // Counter Animation
+    var counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          const counters = entry.target.querySelectorAll('[data-count]');
-          counters.forEach(counter => {
-            const target = parseInt(counter.dataset.count);
-            const duration = 1500;
-            const start = performance.now();
+          var counters = entry.target.querySelectorAll('[data-count]');
+          counters.forEach(function(counter) {
+            var target = parseInt(counter.getAttribute('data-count'));
+            var duration = 1500;
+            var start = performance.now();
 
             function update(now) {
-              const elapsed = now - start;
-              const progress = Math.min(elapsed / duration, 1);
-              const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
+              var elapsed = now - start;
+              var progress = Math.min(elapsed / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
               counter.textContent = Math.floor(eased * target);
               if (progress < 1) requestAnimationFrame(update);
             }
@@ -623,12 +628,12 @@
       });
     }, { threshold: 0.5 });
 
-    const statsSection = document.getElementById('vorteil');
+    var statsSection = document.getElementById('vorteil');
     if (statsSection) counterObserver.observe(statsSection);
 
-    // ===== Navbar scroll effect =====
-    const navbar = document.querySelector('nav > div');
-    window.addEventListener('scroll', () => {
+    // Navbar scroll effect
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
       if (window.scrollY > 50) {
         navbar.style.background = 'rgba(248, 250, 252, 0.9)';
         navbar.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.05)';

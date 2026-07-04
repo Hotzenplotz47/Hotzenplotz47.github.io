@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maximilian Roskotten – Nachhaltigkeitsberatung & THG-Bilanzierung</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Maximilian Roskotten – Ihr Experte für Nachhaltigkeitsberatung und Treibhausgasbilanzierung (Scope 1–3) für KMU. CO₂-Daten in wirtschaftliche Strategien übersetzen." />
+  <meta name="keywords" content="Nachhaltigkeitsberatung, THG-Bilanzierung, CO2-Bilanz, Scope 1 2 3, KMU, Handwerk, Gastronomie, Energieversorger, Klimastrategie" />
+  <meta name="author" content="Maximilian Roskotten" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Maximilian Roskotten – Nachhaltigkeitsberatung" />
+  <meta property="og:description" content="CO₂-Daten in greifbare, wirtschaftliche Geschäftsstrategien übersetzen. Jetzt kostenlose Erstanalyse sichern." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="[cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            slate:    { 900: '#1a1f2e', 800: '#232a3b', 700: '#2e3748' },
+            forest:   { DEFAULT: '#3a6b4a', light: '#4a8960', dark: '#2c5239', muted: '#5a8a6a' },
+            sage:     { DEFAULT: '#7a9e88', light: '#9dbdaa', muted: '#c4d9cc' },
+            cream:    { DEFAULT: '#f7f4ef', warm: '#f0ece4', dark: '#e8e3da' },
+            charcoal: { DEFAULT: '#2d3142', light: '#4a4f6a' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="[cdnjs.cloudflare.com](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css)" crossorigin="anonymous" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap)" rel="stylesheet" />
+
+  <style>
+    /* ── Base ── */
+    html { scroll-behavior: smooth; }
+    body { background-color: #f7f4ef; color: #2d3142; font-family: 'Inter', system-ui, sans-serif; }
+
+    /* ── Custom scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f7f4ef; }
+    ::-webkit-scrollbar-thumb { background: #7a9e88; border-radius: 3px; }
+
+    /* ── Nav active / scroll ── */
+    .nav-scrolled {
+      background: rgba(247, 244, 239, 0.95) !important;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 24px rgba(45, 49, 66, 0.08);
+    }
+
+    /* ── Hero background pattern ── */
+    .hero-pattern {
+      background-color: #1a1f2e;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(58, 107, 74, 0.28) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(122, 158, 136, 0.18) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='[w3.org](http://www.w3.org/2000/svg)'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233a6b4a' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* ── Gradient text ── */
+    .text-gradient {
+      background: linear-gradient(135deg, #4a8960 0%, #7a9e88 50%, #9dbdaa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Process timeline connector ── */
+    .timeline-connector::after {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(100% + 0px);
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #3a6b4a, #7a9e88);
+      opacity: 0.4;
+    }
+
+    /* ── Nährwert Table ── */
+    .naehrwert-card {
+      border: 3px solid #2d3142;
+      border-radius: 4px;
+      background: #fafaf8;
+    }
+    .naehrwert-thick-rule { border-top: 8px solid #2d3142; }
+    .naehrwert-medium-rule { border-top: 4px solid #2d3142; }
+    .naehrwert-thin-rule   { border-top: 1px solid #c4d9cc; }
+
+    .naehrwert-bar-bg { background: #e8e3da; border-radius: 2px; overflow: hidden; height: 8px; }
+    .naehrwert-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #2c5239, #3a6b4a);
+      transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .naehrwert-bar-fill[data-width="0"] { width: 0 !important; }
+
+    /* ── Section fade-in ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── CTA pulse ring ── */
+    .cta-pulse {
+      position: relative;
+      overflow: visible;
+    }
+    .cta-pulse::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      border: 2px solid rgba(74, 137, 96, 0.5);
+      animation: pulse-ring 2.5s ease-out infinite;
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(1);   opacity: 0.7; }
+      70%  { transform: scale(1.08); opacity: 0; }
+      100% { transform: scale(1.08); opacity: 0; }
+    }
+
+    /* ── Mobile menu ── */
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.35s ease;
+      opacity: 0;
+    }
+    #mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+
+    /* ── Hover lift ── */
+    .hover-lift {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(45, 49, 66, 0.12);
+    }
+
+    /* ── Form input focus ── */
+    .form-input {
+      background: #f0ece4;
+      border: 1.5px solid #c4d9cc;
+      border-radius: 8px;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      outline: none;
+    }
+    .form-input:focus {
+      border-color: #3a6b4a;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(58, 107, 74, 0.12);
+    }
+
+    /* ── Step number ── */
+    .step-num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2c5239, #3a6b4a);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem; color: #fff;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <header
+    id="navbar"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-10"
+    role="banner"
+  >
+    <nav class="max-w-6xl mx-auto flex items-center justify-between" aria-label="Hauptnavigation">
+
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2 group" aria-label="Zur Startseite">
+        <div class="w-8 h-8 rounded-lg bg-forest flex items-center justify-center transition-transform duration-300 group-hover:rotate-6">
+          <i class="fa-solid fa-leaf text-white text-sm" aria-hidden="true"></i>
+        </div>
+        <span class="font-bold text-cream-DEFAULT text-lg tracking-tight" style="color:#f7f4ef;">
+          M. Roskotten
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium" style="color: rgba(247,244,239,0.8);">
+        <li><a href="#ueber-mich" class="hover:text-sage-light transition-colors duration-200">Über mich</a></li>
+        <li><a href="#prozess"    class="hover:text-sage-light transition-colors duration-200">Prozess</a></li>
+        <li><a href="#naehrwerte" class="hover:text-sage-light transition-colors duration-200">Nährwerte</a></li>
+        <li><a href="#kontakt"   class="hover:text-sage-light transition-colors duration-200">Kontakt</a></li>
+      </ul>
+
+      <!-- Desktop CTA -->
+      <a
+        href="#kontakt"
+        class="hidden md:inline-flex items-center gap-2 bg-forest text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-forest-light transition-colors duration-200"
+        aria-label="Kostenlose Erstanalyse anfragen"
+      >
+        <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
+        Erstanalyse anfragen
+      </a>
+
+      <!-- Mobile Hamburger -->
+      <button
+        id="menu-toggle"
+        class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg"
+        aria-label="Menü öffnen / schließen"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="hamburger-line w-6 h-0.5 bg-cream-DEFAULT transition-all duration-300" style="background:#f7f4ef;"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-cream-DEFAULT transition-all duration-300" style="background:#f7f4ef;"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-cream-DEFAULT transition-all duration-300" style="background:#f7f4ef;"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" role="menu" aria-label="Mobiles Navigationsmenü">
+      <ul class="max-w-6xl mx-auto mt-4 pb-4 flex flex-col gap-3 text-sm font-medium border-t" style="border-color: rgba(247,244,239,0.15); color: rgba(247,244,239,0.85);">
+        <li class="pt-3"><a href="#ueber-mich" class="block py-2 hover:text-sage-light transition-colors" role="menuitem">Über mich</a></li>
+        <li><a href="#prozess"    class="block py-2 hover:text-sage-light transition-colors" role="menuitem">Prozess</a></li>
+        <li><a href="#naehrwerte" class="block py-2 hover:text-sage-light transition-colors" role="menuitem">Nährwerte der Nachhaltigkeit</a></li>
+        <li><a href="#kontakt"   class="block py-2 hover:text-sage-light transition-colors" role="menuitem">Kontakt</a></li>
+        <li class="pt-2">
+          <a href="#kontakt" class="inline-flex items-center gap-2 bg-forest text-white text-sm font-semibold px-5 py-2.5 rounded-full w-full justify-center" role="menuitem">
+            <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
+            Erstanalyse anfragen
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section
+    id="hero"
+    class="hero-pattern min-h-screen flex items-center relative overflow-hidden"
+    aria-label="Einstiegsbereich"
+  >
+    <!-- Decorative circles -->
+    <div class="absolute top-20 right-10 w-64 h-64 rounded-full opacity-5" style="background: radial-gradient(circle, #4a8960, transparent);" aria-hidden="true"></div>
+    <div class="absolute bottom-20 left-0 w-96 h-96 rounded-full opacity-5" style="background: radial-gradient(circle, #7a9e88, transparent); transform: translateX(-40%);" aria-hidden="true"></div>
+
+    <div class="max-w-6xl mx-auto px-6 md:px-10 py-32 w-full">
+      <div class="max-w-3xl">
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase mb-8" style="background: rgba(58,107,74,0.25); color: #9dbdaa; border: 1px solid rgba(58,107,74,0.35);">
+          <span class="w-1.5 h-1.5 rounded-full bg-sage-light animate-pulse" style="background:#7a9e88;" aria-hidden="true"></span>
+          Nachhaltigkeitsberatung &amp; THG-Bilanzierung
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white mb-6">
+          CO₂-Daten, die<br />
+          <span class="text-gradient">wirtschaftlich wirken.</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-lg md:text-xl leading-relaxed mb-10 max-w-xl" style="color: rgba(247,244,239,0.72);">
+          Ich übersetze abstrakte Treibhausgasbilanzen (Scope 1–3) in konkrete, umsetzbare Strategien für KMU – verständlich, messbar und direkt rentabel.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="#kontakt"
+            class="cta-pulse inline-flex items-center justify-center gap-2.5 bg-forest text-white font-bold px-8 py-4 rounded-full text-base hover:bg-forest-light transition-all duration-200"
+            aria-label="Jetzt kostenlose Erstanalyse anfordern"
+          >
+            <i class="fa-regular fa-calendar-check" aria-hidden="true"></i>
+            Kostenlose Erstanalyse
+          </a>
+          <a
+            href="#prozess"
+            class="inline-flex items-center justify-center gap-2.5 font-semibold px-8 py-4 rounded-full text-base border transition-all duration-200"
+            style="color: rgba(247,244,239,0.85); border-color: rgba(247,244,239,0.2); background: rgba(247,244,239,0.05);"
+            onmouseover="this.style.background='rgba(247,244,239,0.1)'"
+            onmouseout="this.style.background='rgba(247,244,239,0.05)'"
+            aria-label="Mehr über den Beratungsprozess erfahren"
+          >
+            Wie es funktioniert
+            <i class="fa-solid fa-arrow-right text-sm" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="mt-14 flex flex-wrap gap-6 items-center" style="color: rgba(247,244,239,0.45);">
+          <div class="flex items-center gap-2 text-sm">
+            <i class="fa-solid fa-shield-halved" style="color:#7a9e88;" aria-hidden="true"></i>
+            NDA-geschützte Zusammenarbeit
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <i class="fa-solid fa-circle-check" style="color:#7a9e88;" aria-hidden="true"></i>
+            Ecocockpit-zertifiziert
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <i class="fa-solid fa-bolt" style="color:#7a9e88;" aria-hidden="true"></i>
+            Ergebnis in 4–6 Wochen
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <a href="#ueber-mich" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40 hover:opacity-70 transition-opacity" aria-label="Nach unten scrollen">
+      <span class="text-xs tracking-widest uppercase" style="color:#9dbdaa;">Scroll</span>
+      <i class="fa-solid fa-chevron-down text-sm animate-bounce" style="color:#9dbdaa;" aria-hidden="true"></i>
+    </a>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       ÜBER MICH
+  ═══════════════════════════════════════════ -->
+  <section id="ueber-mich" class="py-24 md:py-32 bg-cream-DEFAULT" aria-labelledby="ueber-mich-title">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+
+        <!-- Portrait placeholder -->
+        <div class="reveal flex justify-center md:justify-start order-2 md:order-1">
+          <div class="relative">
+            <!-- Frame decoration -->
+            <div class="absolute -top-4 -left-4 w-full h-full rounded-2xl border-2 opacity-20" style="border-color:#3a6b4a;" aria-hidden="true"></div>
+            <div
+              class="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden"
+              style="background: linear-gradient(135deg, #2c5239 0%, #3a6b4a 50%, #5a8a6a 100%);"
+              role="img"
+              aria-label="Portraitfoto Maximilian Roskotten – Nachhaltigkeitsberater"
+            >
+              <!-- Subtle pattern overlay -->
+              <div class="absolute inset-0 opacity-10" style="background-image: url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='[w3.org](http://www.w3.org/2000/svg)'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Ccircle cx='20' cy='20' r='1.5'/%3E%3C/g%3E%3C/svg%3E\");" aria-hidden="true"></div>
+              <!-- Initials fallback -->
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span class="text-5xl font-black text-white opacity-90 tracking-tight">MR</span>
+                <span class="text-sm font-medium mt-2 opacity-60" style="color:#c4d9cc;">Foto folgt</span>
+              </div>
+            </div>
+            <!-- Stats badge -->
+            <div class="absolute -bottom-5 -right-5 bg-white rounded-xl px-4 py-3 shadow-xl border" style="border-color:#e8e3da;">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-forest flex items-center justify-center" style="background:#3a6b4a;">
+                  <i class="fa-solid fa-leaf text-white text-sm" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <p class="text-xs font-medium" style="color:#7a9e88;">Fokus auf KMU</p>
+                  <p class="text-sm font-bold" style="color:#2d3142;">Scope 1–3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text content -->
+        <div class="reveal order-1 md:order-2">
+          <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color:#3a6b4a;">Über mich</p>
+          <h2 id="ueber-mich-title" class="text-3xl md:text-4xl font-extrabold leading-tight mb-6" style="color:#2d3142;">
+            Maximilian Roskotten.<br />
+            <span style="color:#3a6b4a;">Berater. Stratege. Macher.</span>
+          </h2>
+          <div class="space-y-4 text-base leading-relaxed" style="color:#4a4f6a;">
+            <p>
+              Ich bin kein Consultant im klassischen Sinne – ich bin Ihr direkter Partner, der mit Ihnen im Betrieb denkt, nicht über ihn hinweg. Mit einem tiefen Verständnis für die Realität von Handwerksbetrieben, Gastronomen und regionalen Energieversorgern übersetze ich komplexe Klimadaten in Sprache, die Unternehmer verstehen: Zahlen, Kosten, Chancen.
+            </p>
+            <p>
+              Mein Ansatz ist <strong style="color:#2d3142;">pragmatisch und messbar</strong>. Kein Greenwashing, keine leeren Versprechen. Stattdessen: eine saubere Treibhausgasbilanz nach anerkannten Standards, daraus abgeleitete Einsparpotenziale – und ein klarer Fahrplan, den Sie morgen umsetzen können.
+            </p>
+          </div>
+
+          <!-- Skills chips -->
+          <div class="flex flex-wrap gap-2 mt-8">
+            <span class="px-3 py-1.5 rounded-full text-xs font-semibold" style="background:#e8f0eb; color:#2c5239;">THG-Bilanzierung</span>
+            <span class="px-3 py-1.5 rounded-full text-xs font-semibold" style="background:#e8f0eb; color:#2c5239;">Scope 1–3</span>
+            <span class="px-3 py-1.5 rounded-full text-xs font-semibold" style="background:#e8f0eb; color:#2c5239;">Ecocockpit</span>
+            <span class="px-3 py-1.5 rounded-full text-xs font-semibold" style="background:#e8f0eb; color:#2c5239;">KMU-Strategie</span>
+            <span class="px-3 py-1.5 rounded-full text-xs font-semibold" style="background:#e8f0eb; color:#2c5239;">Energieeffizienz</span>
+            <span class="px-3 py-1.5 rounded-full text-xs font-semibold" style="background:#e8f0eb; color:#2c5239;">Klimarisiko</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       DER PROZESS
+  ═══════════════════════════════════════════ -->
+  <section id="prozess" class="py-24 md:py-32" style="background:#f0ece4;" aria-labelledby="prozess-title">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+
+      <div class="text-center mb-16 reveal">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color:#3a6b4a;">Mein Ansatz</p>
+        <h2 id="prozess-title" class="text-3xl md:text-4xl font-extrabold" style="color:#2d3142;">
+          Von Daten zur Strategie –<br class="hidden md:block" />
+          in vier klaren Schritten.
+        </h2>
+        <p class="mt-4 text-base max-w-xl mx-auto" style="color:#4a4f6a;">
+          Strukturiert, transparent, ergebnisorientiert. So läuft unsere Zusammenarbeit ab.
+        </p>
+      </div>
+
+      <!-- Process Steps Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Step 1 -->
+        <div class="reveal hover-lift bg-white rounded-2xl p-7 border" style="border-color:#e8e3da;">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="step-num" aria-hidden="true">01</div>
+            <div class="h-px flex-1 opacity-20" style="background:#3a6b4a;" aria-hidden="true"></div>
+          </div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#e8f0eb;">
+            <i class="fa-solid fa-file-shield text-base" style="color:#3a6b4a;" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-base font-bold mb-2" style="color:#2d3142;">Vertraulichkeit &amp; NDA</h3>
+          <p class="text-sm leading-relaxed" style="color:#4a4f6a;">
+            Bevor wir beginnen, sichern wir Ihre Daten ab. Ein Vertrag schafft die rechtliche Basis für eine offene, vertrauensvolle Zusammenarbeit.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="reveal hover-lift bg-white rounded-2xl p-7 border" style="border-color:#e8e3da; transition-delay: 0.1s;">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="step-num" aria-hidden="true">02</div>
+            <div class="h-px flex-1 opacity-20" style="background:#3a6b4a;" aria-hidden="true"></div>
+          </div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#e8f0eb;">
+            <i class="fa-solid fa-database text-base" style="color:#3a6b4a;" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-base font-bold mb-2" style="color:#2d3142;">Datenerhebung &amp; -analyse</h3>
+          <p class="text-sm leading-relaxed" style="color:#4a4f6a;">
+            Gemeinsam erfassen wir alle relevanten Emissionsquellen – von Energie und Fuhrpark bis zu Lieferkette und Abfall (Scope 1–3).
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="reveal hover-lift bg-white rounded-2xl p-7 border" style="border-color:#e8e3da; transition-delay: 0.2s;">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="step-num" aria-hidden="true">03</div>
+            <div class="h-px flex-1 opacity-20" style="background:#3a6b4a;" aria-hidden="true"></div>
+          </div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#e8f0eb;">
+            <i class="fa-solid fa-chart-pie text-base" style="color:#3a6b4a;" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-base font-bold mb-2" style="color:#2d3142;">Ecocockpit-Bilanzierung</h3>
+          <p class="text-sm leading-relaxed" style="color:#4a4f6a;">
+            Professionelle Berechnung Ihrer THG-Bilanz mit dem anerkannten Ecocockpit-Tool. Normkonform, nachvollziehbar und auditierbar.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="reveal hover-lift rounded-2xl p-7 border" style="background: linear-gradient(135deg, #2c5239, #3a6b4a); border-color:#2c5239; transition-delay: 0.3s;">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-base flex-shrink-0" style="background: rgba(255,255,255,0.15); color:#fff;" aria-hidden="true">04</div>
+            <div class="h-px flex-1 opacity-30" style="background:#fff;" aria-hidden="true"></div>
+          </div>
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background: rgba(255,255,255,0.15);">
+            <i class="fa-solid fa-rocket text-base text-white" aria-hidden="true"></i>
+          </div>
+          <h3 class="text-base font-bold mb-2 text-white">Strategie &amp; Roadmap</h3>
+          <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.75);">
+            Das Ergebnis: eine priorisierte Klimastrategie mit konkreten Maßnahmen, Einsparpotenzial in Euro und einem realistischen Zeitplan.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       NÄHRWERTE DER NACHHALTIGKEIT
+  ═══════════════════════════════════════════ -->
+  <section id="naehrwerte" class="py-24 md:py-32 bg-cream-DEFAULT" aria-labelledby="naehrwerte-title">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+
+      <div class="text-center mb-16 reveal">
+        <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color:#3a6b4a;">Transparenz wie auf dem Etikett</p>
+        <h2 id="naehrwerte-title" class="text-3xl md:text-4xl font-extrabold" style="color:#2d3142;">
+          Die Nährwerte<br class="hidden md:block" />
+          der Nachhaltigkeit.
+        </h2>
+        <p class="mt-4 text-base max-w-xl mx-auto" style="color:#4a4f6a;">
+          Was auf Lebensmitteln selbstverständlich ist, biete ich für Ihr Unternehmen: klare, messbare Kennzahlen zu Ihrer ökologischen und wirtschaftlichen Performance.
+        </p>
+      </div>
+
+      <!-- Nährwert Cards Grid -->
+      <div class="grid md:grid-cols-3 gap-8 items-stretch">
+
+        <!-- Card 1: CO₂-Profil -->
+        <div class="reveal hover-lift" style="transition-delay:0s;">
+          <div class="naehrwert-card h-full" role="region" aria-label="CO₂-Emissionsprofil Nährwerttabelle">
+            <!-- Header -->
+            <div class="px-5 pt-5 pb-4" style="background:#f7f4ef;">
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-xl font-black tracking-tight" style="color:#2d3142;">CO₂-Emissionsprofil</h3>
+                <span class="w-7 h-7 rounded-full flex items-center justify-center" style="background:#e8f0eb;">
+                  <i class="fa-solid fa-cloud text-xs" style="color:#3a6b4a;" aria-hidden="true"></i>
+                </span>
+              </div>
+              <p class="text-xs" style="color:#7a9e88;">pro Bilanzierungsjahr / Musterbetrieb</p>
+            </div>
+            <div class="naehrwert-thick-rule mx-0"></div>
+
+            <!-- Portiongröße -->
+            <div class="px-5 py-3 flex justify-between items-center" style="background:#f7f4ef;">
+              <span class="text-xs font-bold" style="color:#2d3142;">Bilanzumfang</span>
+              <span class="text-xs font-bold" style="color:#2d3142;">Scope 1, 2 &amp; 3</span>
+            </div>
+            <div class="naehrwert-medium-rule mx-0"></div>
+
+            <div class="px-5 py-2" style="background:#fafaf8;">
+              <p class="text-xs font-bold" style="color:#2d3142;">Gesamtemissionen</p>
+              <p class="text-4xl font-black my-1" style="color:#2d3142;">142 <span class="text-2xl font-bold">t CO₂e</span></p>
+              <p class="text-xs" style="color:#7a9e88;">Basline vor Beratung</p>
+            </div>
+            <div class="naehrwert-thick-rule mx-0"></div>
+
+            <!-- Rows -->
+            <div class="px-5 py-1" style="background:#fafaf8;">
+              <div class="py-2.5">
+                <div class="flex justify-between items-baseline mb-1.5">
+                  <span class="text-xs font-bold" style="color:#2d3142;">Scope 1 – Direkt</span>
+                  <span class="text-xs font-bold" style="color:#2d3142;">28 t</span>
+                </div>
+                <div class="naehrwert-bar-bg">
+                  <div class="naehrwert-bar-fill" style="width: 20%;" data-width="20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="Scope 1 Anteil 20%"></div>
+                </div>
+              </div>
+              <div class="naehrwert-thin-rule"></div>
+              <div class="py-2.5 pl-4">
+                <div class="flex justify-between items-baseline mb-1.5">
+                  <span class="text-xs" style="color:#4a4f6a;">Scope 2 – Energie</span>
+                  <span class="text-xs font-semibold" style="color:#2d3142;">45 t</span>
+                </div>
+                <div class="naehrwert-bar-bg">
+                  <div class="naehrwert-bar-fill" style="width: 32%; background: linear-gradient(90deg, #3a6b4a, #5a8a6a);" data-width="32%" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" aria-label="Scope 2 Anteil 32%"></div>
+                </div>
+              </div>
+              <div class="naehrwert-thin-rule"></div>
+              <div class="py-2.5 pl-4">
+                <div class="flex justify-between items-baseline mb-1.5">
+                  <span class="text-xs" style="color:#4a4f6a;">Scope 3 – Lieferkette</span>
+                  <span class="text-xs font-semibold" style="color:#2d3142;">69 t</span>
+                </div>
+                <div class="naehrwert-bar-bg">
+                  <div class="naehrwert-bar-fill" style="width: 49%; background: linear-gradient(90deg, #3a6b4a, #7a9e88);" data-width="49%" role="progressbar" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" aria-label="Scope 3 Anteil 49%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="naehrwert-medium-rule mx-0"></div>
+            <div class="px-5 py-3" style="background:#fafaf8;">
+              <p class="text-xs leading-relaxed" style="color:#7a9e88;">*Beispielwerte eines Gastrobetriebs mit 20 Mitarbeitern. Ihre individuelle Bilanz kann abweichen.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Einsparpotenzial -->
+        <div class="reveal hover-lift" style="transition-delay:0.15s;">
+          <div class="naehrwert-card h-full" role="region" aria-label="Einsparpotenzial Nährwerttabelle">
+            <div class="px-5 pt-5 pb-4" style="background:#f7f4ef;">
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-xl font-black tracking-tight" style="color:#2d3142;">Einsparpotenzial</h3>
+                <span class="w-7 h-7 rounded-full flex items-center justify-center" style="background:#e8f0eb;">
+                  <i class="fa-solid fa-arrow-trend-down text-xs" style="color:#3a6b4a;" aria-hidden="true"></i>
+                </span>
+              </div>
+              <p class="text-xs" style="color:#7a9e88;">nach Strategieumsetzung / 12 Monate</p>
+            </div>
+            <div class="naehrwert-thick-rule mx-0"></div>
+            <div class="px-5 py-3 flex justify-between items-center" style="background:#f7f4ef;">
+              <span class="text-xs font-bold" style="color:#2d3142;">Analysehorizont</span>
+              <span class="text-xs font-bold" style="color:#2d3142;">1–3 Jahre</span>
+            </div>
+            <div class="naehrwert-medium-rule mx-0"></div>
+            <div class="px-5 py-2" style="background:#fafaf8;">
+              <p class="text-xs font-bold" style="color:#2d3142;">CO₂-Reduktion realisierbar</p>
+              <p class="text-4xl font-black my-1" style="color:#3a6b4a;">–38 <span class="text-2xl font-bold">%</span></p>
+              <p class="text-xs" style="color:#7a9e88;">ca. 54 t CO₂e / Jahr einsparbar</p>
+            </div>
+            <div class="naehrwert-thick-rule mx-0"></div>
+            <div class="px-5 py-1" style="background:#fafaf8;">
+              <div class="py-2.5">
+                <div class="flex justify-between items-baseline mb-1.5">
+                  <span class="text-xs font-bold" style="color:#2d3142;">Energieoptimierung</span>
+                  <span class="text-xs font-bold" style="color:#2d3142;">–22 %</span>
+                </div>
+                <div class="naehrwert-bar-bg">
+                  <div class="naehrwert-bar-fill" style="width: 22%;" data-width="22%" role="progressbar" aria-valuenow="22" aria-valuemin="0" aria-valuemax="100" aria-label="Energieoptimierung 22%"></div>
+                </div>
+              </div>
+              <div class="naehrwert-thin-rule"></div>
+              <div class="py-2.5 pl-4">
+                <div class="flex justify-between items-baseline mb-1.5">
+                  <span class="text-xs" style="color:#4a4f6a;">Lieferkettenoptimierung</span>
+                  <span class="text-xs font-semibold" style="color:#2d3142;">–10 %</span>
+                </div>
+                <div class="naehrwert-bar-bg">
+                  <div class="naehrwert-bar-fill" style="width: 10%; background: linear-gradient(90deg, #3a6b4a, #5a8a6a);" data-width="10%" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-label="Lieferkettenoptimierung 10%"></div>
+                </div>
+              </div>
+              <div class="naehrwert-thin-rule"></div>
+              <div class="py-2.5 pl-4">
+                <div class="flex justify-between items-baseline mb-1.5">
+                  <span class="text-xs" style="color:#4a4f6a;">Mobilitätsstrategie</span>
+                  <span class="text-xs font-semibold" style="color:#2d3142;">–6 %</span>
+                </div>
+                <div class="naehrwert-bar-bg">
+                  <div class="naehrwert-bar-fill" style="width: 6%; background: linear-gradient(90deg, #3a6b4a, #7a9e88);" data-width="6%" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100" aria-label="Mobilitätsstrategie 6%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="naehrwert-medium-rule mx-0"></div>
+            <div class="px-5 py-3" style="background:#fafaf8;">
+              <p class="text-xs leading-relaxed" style="color:#7a9e88;">*Auf Basis realer Beratungsprojekte ermittelte Durchschnittswerte. Ergebnisse variieren.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Wirtschaftliche Wirkung -->
+        <div class="reveal hover-lift" style="transition-delay:0.3s;">
+          <div class="naehrwert-card h-full" role="region" aria-label="Wirtschaftliche Wirkung Nährwerttabelle">
+            <div class="px-5 pt-5 pb-4" style="background:#f7f4ef;">
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="text-xl font-black tracking-tight" style="color:#2d3142;">Wirtschaftl. Wirkung</h3>
+                <span class="w-7 h-7 rounded-full flex items-center justify-center" style="background:#e8f0eb;">
+                  <i class="fa-solid fa-euro-sign text-xs" style="color:#3a6b4a;" aria-hidden="true"></i>
+                </span>
+              </div>
+              <p class="text-xs" style="color:#7a9e88;">Kostenwirkung / Förderpotenzial</p>
+            </div>
+            <div class="naehrwert-thick-rule mx-0"></div>
+            <div class="px-5 py-3 flex justify-between items-center" style="background:#f7f4ef;">
+              <span class="text-xs font-bold" style="color:#2d3142;">Amortisationsdauer</span>
+              <span class="text-xs font-bold" style="color:#2d3142;">Ø 18–24 Monate</span>
+            </div>
+            <div class="naehrwert-medium-rule mx-0"></div>
+            <div class="px-5 py-2" style="background:#fafaf8;">
+              <p class="text-xs font-bold" style="color:#2d3142;">Jährl. Kosteneinsparung</p>
+              <p class="text-4xl font-black my-1" style="color:#2d3142;">8.400 <span class="text-2xl font-bold">€</span></p>
+              <p class="text-xs" style="color:#7a9e88;">Energie + Betriebskosten / Jahr</p>
+            </div>
+            <div class="naehrwert-thick-rule mx-0"></div>
+            <div class="px-5 py-1" style="background:#fafaf8;">
+              <div class="py-2.5">
+                <div class="flex justify-between items-baseline mb-1.5">
+                  <span class="text-xs font-bold" style="color:#2d3142;">Energiekostenreduktion</span>
+                  <span class="text-xs font-bold" style="color:#2d3142;">5.200 €</span>
+                </div>
+                <div class="naehrwert-bar-bg">
+                  <div class="naehrwert-bar-fill" style="width: 62%;" data-width="62%" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" aria-label="Energiekostenreduktion 62%"></div>
+                </div>
+              </div>
+              <div class="naehrwert-thin-rule"></div>
+              <div class="py-2.5 pl-4">
+                <div class="flex justify-between items-baseline mb-1.5">
+                  <span class="text-xs" style="color:#4a4f6a;">Fördermittel-Potenzial</span>
+                  <span class="text-xs font-semibold" style="color:#2d3142;">bis 3.500 €</span>
+                </div>
+                <div class="naehrwert-bar-bg">
+                  <div class="naehrwert-bar-fill" style="width: 42%; background: linear-gradient(90deg, #3a6b4a, #5a8a6a);" data-width="42%" role="progressbar" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100" aria-label="Fördermittel 42%"></div>
+                </div>
+              </div>
+              <div class="naehrwert-thin-rule"></div>
+              <div class="py-2.5 pl-4">
+                <div class="flex justify-between items-baseline mb-1.5">
+                  <span class="text-xs" style="color:#4a4f6a;">CO₂-Steuer-Einsparung</span>
+                  <span class="text-xs font-semibold" style="color:#2d3142;">1.200 €</span>
+                </div>
+                <div class="naehrwert-bar-bg">
+                  <div class="naehrwert-bar-fill" style="width: 14%; background: linear-gradient(90deg, #3a6b4a, #7a9e88);" data-width="14%" role="progressbar" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100" aria-label="CO2-Steuer-Einsparung 14%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="naehrwert-medium-rule mx-0"></div>
+            <div class="px-5 py-3" style="background:#fafaf8;">
+              <p class="text-xs leading-relaxed" style="color:#7a9e88;">*Illustrative Werte. Individuelle Kalkulation im Erstgespräch. Ohne Gewähr.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom note -->
+      <div class="mt-10 text-center reveal">
+        <p class="text-sm" style="color:#7a9e88;">
+          <i class="fa-solid fa-circle-info mr-1.5" aria-hidden="true"></i>
+          Diese Kennzahlen basieren auf realen Beratungsprojekten und dienen der Veranschaulichung.
+          Ihre individuelle Bilanz erstellen wir gemeinsam – kostenlos in der Erstanalyse.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       BRANCHEN-FOCUS STRIP
+  ═══════════════════════════════════════════ -->
+  <section class="py-16" style="background:#2d3142;" aria-label="Branchen-Fokus">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+      <p class="text-center text-xs font-semibold tracking-widest uppercase mb-10" style="color:#7a9e88;">Meine Schwerpunktbranchen</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="reveal flex items-start gap-4 p-6 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(58,107,74,0.3);">
+            <i class="fa-solid fa-hammer text-lg" style="color:#9dbdaa;" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-white mb-1">Handwerksbetriebe</h3>
+            <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.55);">Von der Schreinerei bis zum Dachdeckerbetrieb – ich kenne die typischen Emissionsquellen und Einsparhebel im Handwerk.</p>
+          </div>
+        </div>
+        <div class="reveal flex items-start gap-4 p-6 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); transition-delay:0.1s;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(58,107,74,0.3);">
+            <i class="fa-solid fa-utensils text-lg" style="color:#9dbdaa;" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-white mb-1">Gastronomie</h3>
+            <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.55);">Kältetechnik, Lebensmitteleinkauf, Energieverbrauch – im Gastgewerbe stecken enorme, oft unentdeckte Einsparpotenziale.</p>
+          </div>
+        </div>
+        <div class="reveal flex items-start gap-4 p-6 rounded-xl" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); transition-delay:0.2s;">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(58,107,74,0.3);">
+            <i class="fa-solid fa-bolt text-lg" style="color:#9dbdaa;" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-white mb-1">Energieversorger</h3>
+            <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.55);">Regionale Stadtwerke und Energiedienstleister begleite ich auf dem Weg zu einer transparenten, glaubwürdigen Klimabilanz.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       KONTAKT
+  ═══════════════════════════════════════════ -->
+  <section id="kontakt" class="py-24 md:py-32 bg-cream-DEFAULT" aria-labelledby="kontakt-title">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+      <div class="grid md:grid-cols-2 gap-16 items-start">
+
+        <!-- Left: Info -->
+        <div class="reveal">
+          <p class="text-sm font-semibold tracking-widest uppercase mb-4" style="color:#3a6b4a;">Kontakt</p>
+          <h2 id="kontakt-title" class="text-3xl md:text-4xl font-extrabold leading-tight mb-6" style="color:#2d3142;">
+            Bereit für Ihre<br />
+            kostenlose Erstanalyse?
+          </h2>
+          <p class="text-base leading-relaxed mb-10" style="color:#4a4f6a;">
+            Schreiben Sie mir – ich melde mich innerhalb von 24 Stunden zurück. Das erste Gespräch ist unverbindlich und gibt Ihnen bereits einen konkreten Eindruck davon, wo Ihr größtes Einsparpotenzial liegt.
+          </p>
+
+          <!-- Contact details -->
+          <div class="space-y-5">
+            <a href="mailto:kontakt@roskotten-sustainability.de" class="flex items-center gap-4 group" aria-label="E-Mail an Maximilian Roskotten">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform" style="background:#e8f0eb;">
+                <i class="fa-solid fa-envelope" style="color:#3a6b4a;" aria-hidden="true"></i>
+              </div>
+              <div>
+                <p class="text-xs font-medium mb-0.5" style="color:#7a9e88;">E-Mail</p>
+                <p class="text-sm font-semibold group-hover:underline" style="color:#2d3142;">kontakt@roskotten-sustainability.de</p>
+              </div>
+            </a>
+            <div class="flex items-center gap-4">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center" style="background:#e8f0eb;">
+                <i class="fa-solid fa-location-dot" style="color:#3a6b4a;" aria-hidden="true"></i>
+              </div>
+              <div>
+                <p class="text-xs font-medium mb-0.5" style="color:#7a9e88;">Standort</p>
+                <p class="text-sm font-semibold" style="color:#2d3142;">Deutschland – bundesweit &amp; remote</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social -->
+          <div class="flex gap-3 mt-10">
+            <a
+              href="[linkedin.com](https://linkedin.com)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-xl flex items-center justify-center border hover:bg-forest hover:border-forest hover:text-white transition-all duration-200"
+              style="border-color:#c4d9cc; color:#3a6b4a;"
+              aria-label="LinkedIn-Profil von Maximilian Roskotten"
+            >
+              <i class="fa-brands fa-linkedin-in text-sm" aria-hidden="true"></i>
+            </a>
+            <a
+              href="[xing.com](https://xing.com)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 rounded-xl flex items-center justify-center border hover:bg-forest hover:border-forest hover:text-white transition-all duration-200"
+              style="border-color:#c4d9cc; color:#3a6b4a;"
+              aria-label="XING-Profil von Maximilian Roskotten"
+            >
+              <i class="fa-brands fa-xing text-sm" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal">
+          <!--
+            Tipp: Ersetzen Sie die action-URL mit Ihrer Formspree-Endpunkt-URL:
+            [formspree.io](https://formspree.io/f/IHRE-FORM-ID)
+          -->
+          <form
+            action="mailto:kontakt@roskotten-sustainability.de"
+            method="POST"
+            enctype="text/plain"
+            id="contact-form"
+            class="bg-white rounded-2xl p-8 border"
+            style="border-color:#e8e3da;"
+            novalidate
+            aria-label="Kontaktformular"
+          >
+            <div class="grid sm:grid-cols-2 gap-5 mb-5">
+              <div>
+                <label for="name" class="block text-xs font-semibold mb-2" style="color:#2d3142;">
+                  Name <span class="text-red-400" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-input w-full px-4 py-3 text-sm"
+                  placeholder="Max Mustermann"
+                  required
+                  autocomplete="name"
+                  aria-required="true"
+                />
+              </div>
+              <div>
+                <label for="unternehmen" class="block text-xs font-semibold mb-2" style="color:#2d3142;">Unternehmen</label>
+                <input
+                  type="text"
+                  id="unternehmen"
+                  name="unternehmen"
+                  class="form-input w-full px-4 py-3 text-sm"
+                  placeholder="Muster GmbH"
+                  autocomplete="organization"
+                />
+              </div>
+            </div>
+            <div class="mb-5">
+              <label for="email" class="block text-xs font-semibold mb-2" style="color:#2d3142;">
+                E-Mail <span class="text-red-400" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input w-full px-4 py-3 text-sm"
+                placeholder="max@beispiel.de"
+                required
+                autocomplete="email"
+                aria-required="true"
+              />
+            </div>
+            <div class="mb-5">
+              <label for="branche" class="block text-xs font-semibold mb-2" style="color:#2d3142;">Branche</label>
+              <select
+                id="branche"
+                name="branche"
+                class="form-input w-full px-4 py-3 text-sm"
+                style="appearance: none; background-image: url(\"data:image/svg+xml,%3Csvg xmlns='[w3.org](http://www.w3.org/2000/svg)' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%237a9e88' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E\"); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px;"
+                aria-label="Branche auswählen"
+              >
+                <option value="">Bitte wählen …</option>
+                <option value="handwerk">Handwerk</option>
+                <option value="gastronomie">Gastronomie / Hotellerie</option>
+                <option value="energie">Energieversorger / Stadtwerke</option>
+                <option value="sonstige">Sonstige</option>
+              </select>
+            </div>
+            <div class="mb-6">
+              <label for="nachricht" class="block text-xs font-semibold mb-2" style="color:#2d3142;">
+                Ihre Nachricht <span class="text-red-400" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="nachricht"
+                name="nachricht"
+                rows="5"
+                class="form-input w-full px-4 py-3 text-sm resize-none"
+                placeholder="Kurze Beschreibung Ihres Betriebs und was Sie sich von der Erstanalyse erhoffen …"
+                required
+                aria-required="true"
+              ></textarea>
+            </div>
+
+            <!-- Datenschutz -->
+            <div class="flex items-start gap-3 mb-6">
+              <input
+                type="checkbox"
+                id="datenschutz"
+                name="datenschutz"
+                required
+                class="mt-0.5 w-4 h-4 accent-forest rounded"
+                style="accent-color: #3a6b4a;"
+                aria-required="true"
+              />
+              <label for="datenschutz" class="text-xs leading-relaxed" style="color:#7a9e88;">
+                Ich stimme der Verarbeitung meiner Daten gemäß der
+                <a href="#impressum" class="underline" style="color:#3a6b4a;">Datenschutzerklärung</a>
+                zu. <span class="text-red-400" aria-hidden="true">*</span>
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full flex items-center justify-center gap-2.5 font-bold py-4 px-6 rounded-full text-white transition-all duration-200 hover:opacity-90 active:scale-95"
+              style="background: linear-gradient(135deg, #2c5239, #3a6b4a);"
+              aria-label="Kontaktformular absenden"
+            >
+              <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+              Kostenlose Erstanalyse anfragen
+            </button>
+
+            <p id="form-success" class="hidden mt-4 text-sm font-medium text-center px-4 py-3 rounded-lg" style="color:#2c5239; background:#e8f0eb;" role="alert">
+              <i class="fa-solid fa-circle-check mr-1.5" aria-hidden="true"></i>
+              Vielen Dank! Ich melde mich innerhalb von 24 Stunden.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer id="impressum" style="background:#1a1f2e;" aria-label="Footer mit Impressum">
+    <div class="max-w-6xl mx-auto px-6 md:px-10 py-12">
+      <div class="grid md:grid-cols-3 gap-8 mb-10">
+
+        <!-- Brand -->
+        <div>
+          <a href="#hero" class="flex items-center gap-2 mb-4" aria-label="Zur Startseite">
+            <div class="w-7 h-7 rounded-lg bg-forest flex items-center justify-center" style="background:#3a6b4a;">
+              <i class="fa-solid fa-leaf text-white text-xs" aria-hidden="true"></i>
+            </div>
+            <span class="font-bold text-white text-base">M. Roskotten</span>
+          </a>
+          <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.45);">
+            Nachhaltigkeitsberatung &amp; THG-Bilanzierung für KMU.<br />Scope 1–3 · Ecocockpit · Klimastrategie.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <nav aria-label="Footer-Navigation">
+          <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#7a9e88;">Navigation</p>
+          <ul class="space-y-2 text-sm" style="color: rgba(255,255,255,0.55);">
+            <li><a href="#ueber-mich" class="hover:text-white transition-colors">Über mich</a></li>
+            <li><a href="#prozess"    class="hover:text-white transition-colors">Prozess</a></li>
+            <li><a href="#naehrwerte" class="hover:text-white transition-colors">Nährwerte der Nachhaltigkeit</a></li>
+            <li><a href="#kontakt"   class="hover:text-white transition-colors">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <!-- Legal -->
+        <div>
+          <p class="text-xs font-semibold tracking-widest uppercase mb-4" style="color:#7a9e88;">Rechtliches</p>
+          <address class="not-italic text-sm leading-relaxed mb-4" style="color: rgba(255,255,255,0.45);">
+            <strong class="text-white font-medium">Maximilian Roskotten</strong><br />
+            Nachhaltigkeitsberatung<br />
+            [Ihre Straße und Hausnummer]<br />
+            [PLZ] [Ort]<br /><br />
+            E-Mail: <a href="mailto:kontakt@roskotten-sustainability.de" class="hover:text-white transition-colors">kontakt@roskotten-sustainability.de</a>
+          </address>
+          <div class="flex gap-4 text-xs" style="color: rgba(255,255,255,0.4);">
+            <a href="#impressum" class="hover:text-white transition-colors">Impressum</a>
+            <a href="#impressum" class="hover:text-white transition-colors">Datenschutz</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4" style="border-color: rgba(255,255,255,0.08);">
+        <p class="text-xs" style="color: rgba(255,255,255,0.3);">
+          &copy; <span id="footer-year">2025</span> Maximilian Roskotten. Alle Rechte vorbehalten.
+        </p>
+        <div class="flex gap-3">
+          <a
+            href="[linkedin.com](https://linkedin.com)"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+            style="background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5);"
+            aria-label="LinkedIn"
+          >
+            <i class="fa-brands fa-linkedin-in text-xs" aria-hidden="true"></i>
+          </a>
+          <a
+            href="[xing.com](https://xing.com)"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+            style="background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5);"
+            aria-label="XING"
+          >
+            <i class="fa-brands fa-xing text-xs" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════ -->
+  <script>
+    // ── Footer Year ──
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+
+    // ── Mobile Menu Toggle ──
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerLines = menuToggle.querySelectorAll('.hamburger-line');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+
+      // Animate hamburger → X
+      if (isOpen) {
+        hamburgerLines[0].style.transform = 'translateY(8px) rotate(45deg)';
+        hamburgerLines[1].style.opacity = '0';
+        hamburgerLines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+        hamburgerLines[0].style.transform = '';
+        hamburgerLines[1].style.opacity = '';
+        hamburgerLines[2].style.transform = '';
+      }
+    });
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        hamburgerLines[0].style.transform = '';
+        hamburgerLines[1].style.opacity = '';
+        hamburgerLines[2].style.transform = '';
+      });
+    });
+
+
+    // ── Navbar scroll state ──
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY > 60) {
+        navbar.classList.add('nav-scrolled');
+        // Fix nav text colors after scroll (dark bg → light bg)
+        navbar.querySelectorAll('a').forEach(a => {
+          if (!a.closest('#mobile-menu')) {
+            a.style.color = '#2d3142';
+          }
+        });
+        navbar.querySelector('a[href="#hero"] span').style.color = '#2d3142';
+        // Keep CTA button
+        const ctaBtn = navbar.querySelector('a[href="#kontakt"].hidden.md\\:inline-flex');
+        if (ctaBtn) ctaBtn.style.color = '#fff';
+      } else {
+        navbar.classList.remove('nav-scrolled');
+        navbar.querySelectorAll('a:not(#mobile-menu a)').forEach(a => {
+          if (!a.closest('#mobile-menu')) {
+            a.style.color = '';
+          }
+        });
+        navbar.querySelector('a[href="#hero"] span').style.color = '#f7f4ef';
+      }
+
+      lastScroll = scrollY;
+    }, { passive: true });
+
+
+    // ── Scroll Reveal (IntersectionObserver) ──
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+
+    // ── Nährwert Bars Animation ──
+    // Bars start at 0 via CSS; animate to their data-width when visible
+    const barFills = document.querySelectorAll('.naehrwert-bar-fill');
+    barFills.forEach(bar => {
+      const targetWidth = bar.style.width;
+      bar.style.width = '0';
+
+      const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Slight delay for visual polish
+            setTimeout(() => {
+              bar.style.width = targetWidth;
+            }, 200);
+            barObserver.unobserve(bar);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      barObserver.observe(bar);
+    });
+
+
+    // ── Contact Form (progressive enhancement) ──
+    const form = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+
+    // Only intercept if using Formspree (non-mailto action)
+    form.addEventListener('submit', function(e) {
+      const action = form.getAttribute('action');
+
+      // If it's a mailto: link, allow native behaviour
+      if (action.startsWith('mailto:')) return;
+
+      // Formspree AJAX submission
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      fetch(action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(res => {
+        if (res.ok) {
+          form.reset();
+          formSuccess.classList.remove('hidden');
+          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          alert('Es gab ein Problem beim Senden. Bitte schreiben Sie direkt an: kontakt@roskotten-sustainability.de');
+        }
+      })
+      .catch(() => {
+        alert('Verbindungsfehler. Bitte schreiben Sie direkt an: kontakt@roskotten-sustainability.de');
+      });
+    });
+
+
+    // ── Smooth scroll polyfill for older Safari ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const offset = 72; // navbar height
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

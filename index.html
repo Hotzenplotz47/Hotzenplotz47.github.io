@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Max Rosskotten – Nachhaltigkeit, die sich rechnet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              primary: '#0284c7', // Sky-600
+              accent: '#0ea5e9', // Sky-500
+              green: '#059669',  // Emerald-600
+              greenLight: '#d1fae5',
+              surface: '#F8FAFC', // Slate-50
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Instrument Serif', 'serif']
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-up': 'fadeUp 0.8s ease-out forwards',
+            'fade-up-d1': 'fadeUp 0.8s ease-out 0.15s forwards',
+            'fade-up-d2': 'fadeUp 0.8s ease-out 0.3s forwards',
+            'fade-up-d3': 'fadeUp 0.8s ease-out 0.45s forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-8px)' }
+            },
+            fadeUp: {
+              from: { opacity: '0', transform: 'translateY(20px)' },
+              to: { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #1e293b; /* Slate-800 */
+      font-family: 'Inter', sans-serif;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #F8FAFC; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+    .text-gradient-dark {
+      background: linear-gradient(135deg, #0f172a 0%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8); /* Slate-200 */
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+
+    .glass-card-strong {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+
+    .service-card {
+      transition: all 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      border-color: #0284c7;
+    }
+    
+    .counter-value {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAV ========== -->
+  <nav class="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[95%] md:w-[92%] max-w-5xl z-50">
+    <div class="glass-card rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center">
+          <span class="text-white text-xs font-semibold">MR</span>
+        </div>
+        <span class="font-semibold text-sm tracking-tight text-slate-900">Max Rosskotten</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#vorteil" class="text-sm text-slate-500 hover:text-slate-900 transition-colors duration-300">Warum</a>
+        <a href="#leistungen" class="text-sm text-slate-500 hover:text-slate-900 transition-colors duration-300">Leistungen</a>
+        <a href="#ueber" class="text-sm text-slate-500 hover:text-slate-900 transition-colors duration-300">Über mich</a>
+        <a href="#kontakt" class="text-sm text-slate-500 hover:text-slate-900 transition-colors duration-300">Kontakt</a>
+      </div>
+
+      <div class="hidden md:block">
+        <button onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})" class="text-xs font-medium bg-slate-900 text-white px-5 py-2 rounded-full hover:bg-slate-800 transition-all duration-300">Kostenloses Erstgespräch</button>
+      </div>
+
+      <button id="menuBtn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menü">
+        <span class="w-5 h-0.5 bg-slate-800 transition-all duration-300" id="bar1"></span>
+        <span class="w-5 h-0.5 bg-slate-800 transition-all duration-300" id="bar2"></span>
+        <span class="w-3 h-0.5 bg-slate-800 transition-all duration-300" id="bar3"></span>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu md:hidden glass-card-strong rounded-2xl mt-2 px-6 py-5">
+      <div class="flex flex-col gap-4">
+        <a href="#vorteil" class="text-sm text-slate-600 hover:text-slate-900 transition-colors mobile-link">Warum</a>
+        <a href="#leistungen" class="text-sm text-slate-600 hover:text-slate-900 transition-colors mobile-link">Leistungen</a>
+        <a href="#ueber" class="text-sm text-slate-600 hover:text-slate-900 transition-colors mobile-link">Über mich</a>
+        <a href="#kontakt" class="text-sm text-slate-600 hover:text-slate-900 transition-colors mobile-link">Kontakt</a>
+        <div class="border-t border-slate-100 pt-4">
+          <button onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'}); closeMobileMenu();" class="text-xs font-medium bg-slate-900 text-white px-5 py-2.5 rounded-full w-full">Kostenloses Erstgespräch</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="relative pt-36 md:pt-48 pb-20 md:pb-32 px-4 overflow-hidden">
+    <!-- Subtle Background Elements -->
+    <div class="absolute top-20 right-0 w-96 h-96 bg-sky-100/50 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-50/50 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 bg-sky-50 border border-sky-100 rounded-full px-4 py-1.5 mb-8 opacity-0 animate-fade-up">
+        <span class="iconify text-brand-primary text-sm" data-icon="mdi:trending-down"></span>
+        <span class="text-[11px] font-medium text-sky-700 uppercase tracking-wider">Kosten senken durch Nachhaltigkeit</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.05] tracking-tight mb-6 opacity-0 animate-fade-up-d1 text-slate-900">
+        Nachhaltigkeit,<br>
+        <span class="text-gradient-dark">die sich rechnet.</span>
+      </h1>
+
+      <p class="text-base md:text-lg text-slate-500 font-light leading-relaxed max-w-2xl mx-auto mb-10 opacity-0 animate-fade-up-d2">
+        Keine komplexen Kalkulationen, sondern Zahlen, die Unternehmen verstehen. Ich zeige Ihnen, wo Emissionen zu <strong class="font-medium text-slate-700">unnötigen Kosten</strong> führen und wie Sie das <strong class="font-medium text-slate-700">Einsparpotenzial</strong> Ihres Unternehmens heben.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-up-d3">
+        <button onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'})" class="group text-sm font-semibold bg-slate-900 text-white px-8 py-3.5 rounded-full hover:bg-slate-800 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 shadow-slate-900/10">
+          Einsparpotenzial prüfen
+          <span class="iconify group-hover:translate-x-0.5 transition-transform" data-icon="mdi:arrow-right" width="16"></span>
+        </button>
+        <button onclick="document.getElementById('#vorteil').scrollIntoView({behavior:'smooth'})" class="text-sm font-medium text-slate-600 px-8 py-3.5 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-white transition-all duration-300 flex items-center justify-center gap-2 bg-white/50">
+          So funktioniert es
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== VALUE DASHBOARD / NUMBERS ========== -->
+  <section class="relative pb-20 md:pb-32 px-4" id="vorteil">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <p class="text-[11px] font-medium uppercase tracking-widest text-brand-primary mb-4">Der Business Case</p>
+        <h2 class="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 mb-4">CO₂ kostet Geld. Weniger CO₂ spart Geld.</h2>
+        <p class="text-base text-slate-500 font-light max-w-xl mx-auto">Nachhaltigkeit ist keine Kostenstelle, sondern ein Hebel für Ihre Rentabilität. Ich mache das sichtbar.</p>
+      </div>
+
+      <div class="glass-card-strong rounded-2xl p-6 md:p-10 reveal">
+        <div class="grid md:grid-cols-3 gap-8 md:gap-12 mb-10">
+          <div class="text-center md:text-left">
+            <p class="text-[10px] uppercase tracking-widest text-slate-400 font-medium mb-2">Durchschnittliches Einsparpotenzial</p>
+            <div class="flex items-baseline justify-center md:justify-start gap-1">
+              <span class="text-4xl md:text-5xl font-serif tracking-tight text-brand-green counter-value" data-count="18">0</span>
+              <span class="text-2xl font-serif text-brand-green">%</span>
+            </div>
+            <p class="text-sm text-slate-500 mt-2">bei Energie- & Materialkosten</p>
+          </div>
+          <div className="border-l border-slate-100 hidden md:block"></div>
+          <div class="text-center md:text-left">
+            <p class="text-[10px] uppercase tracking-widest text-slate-400 font-medium mb-2">Vermeidbare CO₂-Kosten</p>
+            <div class="flex items-baseline justify-center md:justify-start gap-1">
+              <span class="text-4xl md:text-5xl font-serif tracking-tight text-slate-900 counter-value" data-count="85">0</span>
+              <span class="text-2xl font-serif text-slate-900">€</span>
+            </div>
+            <p class="text-sm text-slate-500 mt-2">pro Tonne CO₂ (EU-ETS Preis)</p>
+          </div>
+          <div className="border-l border-slate-100 hidden md:block"></div>
+          <div class="text-center md:text-left">
+            <p class="text-[10px] uppercase tracking-widest text-slate-400 font-medium mb-2">Risiko durch Compliance-Verstöße</p>
+            <div class="flex items-baseline justify-center md:justify-start gap-1">
+              <span class="text-4xl md:text-5xl font-serif tracking-tight text-red-500 counter-value" data-count="50">0</span>
+              <span class="text-2xl font-serif text-red-500">k€</span>
+            </div>
+            <p class="text-sm text-slate-500 mt-2">Mindeststrafen bei fehlendem Report</p>
+          </div>
+        </div>
+        
+        <!-- Visual Mockup: Simple Chart -->
+        <div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
+          <div class="flex items-center justify-between mb-4">
+            <p class="text-xs font-medium text-slate-600">Kostenentwicklung nach Optimierung</p>
+            <div class="flex items-center gap-4 text-[10px] text-slate-400">
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-300"></span> Bisherige Kosten</span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-brand-primary"></span> Optimiert</span>
+            </div>
+          </div>
+          <div class="flex items-end gap-2 h-24">
+            <div class="flex-1 flex flex-col gap-1">
+              <div class="w-full bg-slate-200 rounded-t" style="height: 80px;"></div>
+              <div class="w-full bg-brand-primary/80 rounded-t -mt-4" style="height: 60px;"></div>
+            </div>
+            <div class="flex-1 flex flex-col gap-1">
+              <div class="w-full bg-slate-200 rounded-t" style="height: 70px;"></div>
+              <div class="w-full bg-brand-primary/80 rounded-t -mt-5" style="height: 45px;"></div>
+            </div>
+            <div class="flex-1 flex flex-col gap-1">
+              <div class="w-full bg-slate-200 rounded-t" style="height: 90px;"></div>
+              <div class="w-full bg-brand-primary/80 rounded-t -mt-7" style="height: 50px;"></div>
+            </div>
+            <div class="flex-1 flex flex-col gap-1">
+              <div class="w-full bg-slate-200 rounded-t" style="height: 60px;"></div>
+              <div class="w-full bg-brand-primary/80 rounded-t -mt-6" style="height: 25px;"></div>
+            </div>
+            <div class="flex-1 flex flex-col gap-1">
+              <div class="w-full bg-slate-200 rounded-t" style="height: 75px;"></div>
+              <div class="w-full bg-brand-primary/80 rounded-t -mt-8" style="height: 30px;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="relative py-20 md:py-32 px-4" id="leistungen">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-[11px] font-medium uppercase tracking-widest text-brand-primary mb-4">Leistungen</p>
+        <h2 class="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 mb-4">Von der Datenlage zur Einsparung</h2>
+        <p class="text-base text-slate-500 font-light max-w-xl mx-auto">Alles aus einer Hand: Ich übersetze Ihre Emissionsdaten in konkrete unternehmerische Handlungsoptionen.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Service 1 -->
+        <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
+          <div class="w-11 h-11 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6">
+            <span class="iconify text-brand-primary text-xl" data-icon="mdi:cash-remove"></span>
+          </div>
+          <h3 class="text-lg font-medium mb-3 text-slate-900">Kosten & Emissionen senken</h3>
+          <p class="text-sm text-slate-500 font-light leading-relaxed">Identifikation der größten Kostentreiber und Einsparpotenziale in Ihren Scope 1-3 Emissionen. Ohne Abstriche am Output.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
+          <div class="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-6">
+            <span class="iconify text-brand-green text-xl" data-icon="mdi:chart-box-outline"></span>
+          </div>
+          <h3 class="text-lg font-medium mb-3 text-slate-900">Management-Reporting</h3>
+          <p class="text-sm text-slate-500 font-light leading-relaxed">Keine 100-seitigen Öko-Papiere. Ich liefere kompakte Berichte mit Kennzahlen, die Vorstände und Geschäftsführer sofort verstehen.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
+          <div class="w-11 h-11 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center mb-6">
+            <span class="iconify text-amber-600 text-xl" data-icon="mdi:shield-check-outline"></span>
+          </div>
+          <h3 class="text-lg font-medium mb-3 text-slate-900">Compliance & Audit-Sicherheit</h3>
+          <p class="text-sm text-slate-500 font-light leading-relaxed">Erfüllung von CSRD, EU-Taxonomie und Lieferkettengesetz. Sorgfältig aufbereitet, damit Sie bei Audits auf der sicheren Seite sind.</p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
+          <div class="w-11 h-11 rounded-xl bg-violet-50 border border-violet-100 flex items-center justify-center mb-6">
+            <span class="iconify text-violet-600 text-xl" data-icon="mdi:database-check-outline"></span>
+          </div>
+          <h3 class="text-lg font-medium mb-3 text-slate-900">Daten-Strukturierung</h3>
+          <p class="text-sm text-slate-500 font-light leading-relaxed">Wir bringen Ordnung in Ihre Emissionsdaten. Ich helfe bei der Auswahl und Implementierung von Carbon-Accounting-Software.</p>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
+          <div class="w-11 h-11 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center mb-6">
+            <span class="iconify text-rose-600 text-xl" data-icon="mdi:lightbulb-on-outline"></span>
+          </div>
+          <h3 class="text-lg font-medium mb-3 text-slate-900">Einspar-Hebel finden</h3>
+          <p class="text-sm text-slate-500 font-light leading-relaxed">Wo verstecken sich die einfachen Wins? Ich analysiere Lieferketten, Energieverbräuche und Prozesse auf schnelle Erfolge.</p>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card glass-card-strong rounded-2xl p-7 md:p-8 reveal">
+          <div class="w-11 h-11 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6">
+            <span class="iconify text-brand-primary text-xl" data-icon="mdi:handshake-outline"></span>
+          </div>
+          <h3 class="text-lg font-medium mb-3 text-slate-900">Stakeholder-Kommunikation</h3>
+          <p class="text-sm text-slate-500 font-light leading-relaxed">Überzeugende Argumente für Kunden, Investoren und Banken. Nachhaltigkeit als harter Wettbewerbsvorteil positioniert.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCESS ========== -->
+  <section class="relative py-20 md:py-32 px-4 bg-white border-y border-slate-100" id="vorgehen">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-[11px] font-medium uppercase tracking-widest text-brand-primary mb-4">Vorgehen</p>
+        <h2 class="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 mb-4">In vier Schritten zur Kostensenkung</h2>
+      </div>
+
+      <div class="space-y-5">
+        <div class="reveal">
+          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start group hover:border-brand-primary/20 transition-all duration-300">
+            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center mt-0.5 text-sm font-semibold">01</div>
+            <div>
+              <h3 class="text-base font-medium mb-2 text-slate-900">Status-Quo & Kostentreiber</h3>
+              <p class="text-sm text-slate-500 font-light leading-relaxed">Wo stehen Sie heute? Welche Daten haben Sie? Wir identifizieren die größten Kostenblöcke durch Emissionen.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start group hover:border-brand-primary/20 transition-all duration-300">
+            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center mt-0.5 text-sm font-semibold">02</div>
+            <div>
+              <h3 class="text-base font-medium mb-2 text-slate-900">Emissionsanalyse & Bewertung</h3>
+              <p class="text-sm text-slate-500 font-light leading-relaxed">Keine Over-Engineering. Ich berechne Ihren Footprint dort, wo es materiell ist – fokussiert auf die Posten, die finanziell ins Gewicht fallen.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start group hover:border-brand-primary/20 transition-all duration-300">
+            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-brand-primary text-white flex items-center justify-center mt-0.5 text-sm font-semibold">03</div>
+            <div>
+              <h3 class="text-base font-medium mb-2 text-slate-900">Einsparpotenziale & Strategie</h3>
+              <p class="text-sm text-slate-500 font-light leading-relaxed">Sie bekommen einen Maßnahmenplan mit ROI-Angaben. Was kostet die Umsetzung, was bringt es? Priorisiert nach Impact.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="glass-card-strong rounded-2xl p-6 md:p-8 flex gap-5 items-start group hover:border-brand-primary/20 transition-all duration-300">
+            <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-brand-green text-white flex items-center justify-center mt-0.5 text-sm font-semibold">04</div>
+            <div>
+              <h3 class="text-base font-medium mb-2 text-slate-900">Umsetzung & Reporting</h3>
+              <p class="text-sm text-slate-500 font-light leading-relaxed">Audit-feste Dokumentation und interne Berichte. Ich begleite Sie bei der Umsetzung der ersten Quick-Wins.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="relative py-20 md:py-32 px-4" id="ueber">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+        <!-- Image Side -->
+        <div class="lg:col-span-2 reveal">
+          <div class="relative">
+            <div class="rounded-2xl overflow-hidden aspect-[3/4] shadow-xl">
+              <img src="https://picsum.photos/seed/max-rosskotten-business/600/800.jpg" alt="Max Rosskotten" class="w-full h-full object-cover">
+            </div>
+            <!-- Floating credential -->
+            <div class="absolute -bottom-4 -right-2 md:-right-4 bg-white rounded-xl px-4 py-3 shadow-lg border border-slate-100 animate-float">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center">
+                  <span class="iconify text-brand-green" data-icon="mdi:currency-eur" width="18"></span>
+                </div>
+                <div>
+                  <p class="text-[11px] font-medium text-slate-800">Business First</p>
+                  <p class="text-[10px] text-slate-400">ROI statt Bürokratie</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Side -->
+        <div class="lg:col-span-3 reveal">
+          <p class="text-[11px] font-medium uppercase tracking-widest text-brand-primary mb-4">Über mich</p>
+          <h2 class="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 mb-6">Max Rosskotten</h2>
+          <div class="space-y-4 text-base text-slate-500 font-light leading-relaxed">
+            <p>Ich bin der Überzeugung, dass Nachhaltigkeit nur dann erfolgreich ist, wenn sie wirtschaftlich Sinn ergibt. Mein Ansatz ist pragmatisch: Ich übersetze Umweltkennzahlen in die Sprache des Geschäftsführers – Kosten, Risiken und Einsparungen.</p>
+            <p>Anstatt Sie mit komplexen GHG-Protokoll-Details aufzuhalten, fokussiere ich mich auf die Frage: <strong class="font-medium text-slate-700">Wo verschenken Sie Geld durch ineffiziente Prozesse und unnötige Emissionen?</strong></p>
+            <p>Mit fundierter Expertise in den Methoden und einem klaren Blick für das Wesentliche unterstütze ich Sie dabei, Nachhaltigkeit von einer Pflichtaufgabe in einen echten Wettbewerbsvorteil zu verwandeln.</p>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-2">
+            <span class="text-[11px] font-medium px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600">GHG Protocol</span>
+            <span class="text-[11px] font-medium px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600">CSRD</span>
+            <span class="text-[11px] font-medium px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600">EU-Taxonomie</span>
+            <span class="text-[11px] font-medium px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600">ISO 14064</span>
+            <span class="text-[11px] font-medium px-3 py-1.5 rounded-full bg-sky-50 border border-sky-100 text-brand-primary">Kostenoptimierung</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="relative py-20 md:py-32 px-4 bg-white border-t border-slate-100" id="kontakt">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12 reveal">
+        <p class="text-[11px] font-medium uppercase tracking-widest text-brand-primary mb-4">Kontakt</p>
+        <h2 class="text-3xl md:text-4xl font-serif tracking-tight text-slate-900 mb-4">Wo verstecken sich Ihre Einsparungen?</h2>
+        <p class="text-base text-slate-500 font-light max-w-lg mx-auto">Lassen Sie uns in einem kostenlosen Erstgespräch herausfinden, ob und wo sich Nachhaltigkeit in Ihrem Unternehmen rechnet.</p>
+      </div>
+
+      <div class="glass-card-strong rounded-2xl p-6 md:p-10 reveal">
+        <form id="contactForm" class="space-y-5">
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-[11px] uppercase tracking-widest text-slate-400 font-medium mb-2">Name</label>
+              <input type="text" required placeholder="Ihr Name" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary/20 transition-all duration-300">
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-widest text-slate-400 font-medium mb-2">E-Mail</label>
+              <input type="email" required placeholder="ihre@email.de" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary/20 transition-all duration-300">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] uppercase tracking-widest text-slate-400 font-medium mb-2">Unternehmen</label>
+            <input type="text" placeholder="Firmenname (optional)" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary/20 transition-all duration-300">
+          </div>
+
+          <div>
+            <label class="block text-[11px] uppercase tracking-widest text-slate-400 font-medium mb-2">Größte Herausforderung</label>
+            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-600 focus:outline-none focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary/20 transition-all duration-300 appearance-none" style="background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22><path fill=%22%2394a3b8%22 d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 16px center;">
+              <option value="" disabled selected>Bitte wählen...</option>
+              <option value="costs">Unklare Energie- & Materialkosten</option>
+              <option value="compliance">Anstehende CSRD-Pflichten</option>
+              <option value="reporting">Fehlendes Management-Reporting</option>
+              <option value="savings">Einsparpotenziale suchen</option>
+              <option value="other">Anderes Thema</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] uppercase tracking-widest text-slate-400 font-medium mb-2">Nachricht</label>
+            <textarea rows="4" placeholder="Kurze Beschreibung Ihrer Situation..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:bg-white focus:ring-1 focus:ring-brand-primary/20 transition-all duration-300 resize-none"></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" class="group w-full text-sm font-semibold bg-slate-900 text-white px-8 py-3.5 rounded-full hover:bg-slate-800 transition-all duration-300 shadow-lg shadow-slate-900/10 flex items-center justify-center gap-2">
+              Kostenlos terminieren
+              <span class="iconify group-hover:translate-x-0.5 transition-transform" data-icon="mdi:arrow-right" width="16"></span>
+            </button>
+          </div>
+        </form>
+
+        <div id="successToast" class="hidden mt-6 p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-center">
+          <p class="text-sm text-emerald-700 font-medium flex items-center justify-center gap-2">
+            <span class="iconify" data-icon="mdi:check-circle" width="18"></span>
+            Vielen Dank! Ich melde mich innerhalb von 24h bei Ihnen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="relative py-10 md:py-14 px-4 bg-slate-900 text-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center">
+            <span class="text-white text-xs font-semibold">MR</span>
+          </div>
+          <div>
+            <p class="text-sm font-medium">Max Rosskotten</p>
+            <p class="text-[10px] text-white/40">Carbon & Business Consulting</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <a href="#vorteil" class="text-xs text-white/40 hover:text-white transition-colors">Warum</a>
+          <a href="#leistungen" class="text-xs text-white/40 hover:text-white transition-colors">Leistungen</a>
+          <a href="#ueber" class="text-xs text-white/40 hover:text-white transition-colors">Über mich</a>
+          <a href="#kontakt" class="text-xs text-white/40 hover:text-white transition-colors">Kontakt</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="mailto:max@rosskotten.de" class="text-white/30 hover:text-white transition-colors">
+            <span class="iconify" data-icon="mdi:email-outline" width="18"></span>
+          </a>
+          <a href="#" class="text-white/30 hover:text-white transition-colors">
+            <span class="iconify" data-icon="mdi:linkedin" width="18"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
+        <p class="text-[11px] text-white/25 font-light">© 2024 Max Rosskotten. Alle Rechte vorbehalten.</p>
+        <div class="flex items-center gap-4">
+          <a href="#" class="text-[11px] text-white/25 hover:text-white/50 transition-colors font-light">Impressum</a>
+          <a href="#" class="text-[11px] text-white/25 hover:text-white/50 transition-colors font-light">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Mobile Menu =====
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    let menuOpen = false;
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      bar1.style.transform = '';
+      bar2.style.opacity = '1';
+      bar3.style.transform = '';
+      bar3.style.width = '12px';
+    }
+
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      if (menuOpen) {
+        bar1.style.transform = 'rotate(45deg) translate(3px, 3px)';
+        bar2.style.opacity = '0';
+        bar3.style.transform = 'rotate(-45deg) translate(3px, -3px)';
+        bar3.style.width = '20px';
+      } else {
+        closeMobileMenu();
+      }
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    // ===== Scroll Reveal =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ===== Smooth Scroll =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ===== Contact Form =====
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const toast = document.getElementById('successToast');
+      toast.classList.remove('hidden');
+      this.reset();
+      setTimeout(() => { toast.classList.add('hidden'); }, 5000);
+    });
+
+    // ===== Counter Animation =====
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counters = entry.target.querySelectorAll('[data-count]');
+          counters.forEach(counter => {
+            const target = parseInt(counter.dataset.count);
+            const duration = 1500;
+            const start = performance.now();
+
+            function update(now) {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
+              counter.textContent = Math.floor(eased * target);
+              if (progress < 1) requestAnimationFrame(update);
+            }
+            requestAnimationFrame(update);
+          });
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.getElementById('vorteil');
+    if (statsSection) counterObserver.observe(statsSection);
+
+    // ===== Navbar scroll effect =====
+    const navbar = document.querySelector('nav > div');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(248, 250, 252, 0.9)';
+        navbar.style.boxShadow = '0 4px 6px -1px rgba(0,0,0,0.05)';
+      } else {
+        navbar.style.background = '';
+        navbar.style.boxShadow = '';
+      }
+    });
+  </script>
+</body>
+</html>
